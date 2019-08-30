@@ -15,9 +15,6 @@ import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
  */
 public class Media {
     
-    public Media(){
-    }
-    
     public static void main( String[] args )
     {
         System.out.println("Calculaaa la mediaaaa");

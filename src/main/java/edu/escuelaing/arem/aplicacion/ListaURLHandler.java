@@ -5,10 +5,17 @@
  */
 package edu.escuelaing.arem.aplicacion;
 
+import edu.escuelaing.arem.handlers.Handler;
+import java.util.HashMap;
+
 /**
  *
  * @author 2115253
  */
 public class ListaURLHandler {
+    private HashMap<String, Handler> mapa;
     
+    public ListaURLHandler(){
+        
+    }
 }
