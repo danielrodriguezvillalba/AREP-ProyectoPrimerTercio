@@ -1,8 +1,7 @@
 edu\escuelaing\arem\aplicacion\AppServer.class
 edu\escuelaing\arem\aplicacion\ListaURLHandler.class
-edu\escuelaing\arem\apps\Media.class
+edu\escuelaing\arem\apps\Cuadrado.class
 edu\escuelaing\arem\anotaciones\WebAnnotation$Web.class
-edu\escuelaing\arem\handlers\MediaHandler.class
 edu\escuelaing\arem\handlers\Handler.class
 edu\escuelaing\arem\anotaciones\WebAnnotation.class
-edu\escuelaing\arem\aplicacion\Controlador.class
+edu\escuelaing\arem\handlers\CuadradoHandler.class

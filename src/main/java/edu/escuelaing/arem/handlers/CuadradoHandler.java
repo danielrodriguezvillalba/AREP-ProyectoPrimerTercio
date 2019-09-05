@@ -18,17 +18,15 @@ import java.util.logging.Logger;
 public class CuadradoHandler implements Handler{
 
     @Override
-    public void procesar() {
+    public String procesar() {
         try {
             Class prueba = Class.forName("edu.escuelaing.arem.apps.Cuadrado");
             Class[] argTypes = new Class [] {Integer.class};
             //Pide metodos de nombre main con parametros representados en un arreglo de clases
-            Method cuadr = prueba.getDeclaredMethod("calcCuadrado", argTypes);
+            Method cuadr = prueba.getDeclaredMethod("calcCuadrado", null);
             int args = 5;
             //si es estatico el metodo el primer campo es nulo, el segundo son los argumentos que usara ese metodo
-            cuadr.invoke(null, args);
-            System.out.println(cuadr);
-            
+            return (String) cuadr.invoke(null, null);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NoSuchMethodException ex) {
@@ -42,6 +40,7 @@ public class CuadradoHandler implements Handler{
         } catch (InvocationTargetException ex) {
             Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
     
 }

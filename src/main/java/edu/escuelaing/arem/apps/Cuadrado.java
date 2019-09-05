@@ -6,6 +6,7 @@
 package edu.escuelaing.arem.apps;
 
 import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
+import static java.lang.System.out;
 
 
 
@@ -15,8 +16,15 @@ import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
  */
 public class Cuadrado {    
     
-    //@Web("media")
-    public static void calcCuadrado(){
-        System.out.println("Calculaaa la mediaaaa");
+    @Web("media")
+    public static String calcCuadrado(){
+        return "<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<meta charset=\"UTF-8\">"
+                + "<title>Pruebaaaaa</title>\n"
+                + "</head>"
+                + "</html>" ;
+        
     }
 }

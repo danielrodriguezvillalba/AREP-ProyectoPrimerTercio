@@ -20,24 +20,18 @@ public class ListaURLHandler {
     
     public ListaURLHandler(){
         mapa = new HashMap<>();
-        mapa.put("apps/cuadrado", mediaHandler);
+        mapa.put("/apps/cuadrado", mediaHandler);
     }
     
     public boolean busque(String busq){
         return mapa.containsKey(busq);
     }
     
-    public void dirigir(String busq){
-        System.out.println("busqyewhyjhfdbfjhbfd "+busq);
-        Map llaves = mapa;
-        for(int i = 0; i < mapa.size(); i++){
-            if(busq.contains(mapa.)){
-            }
-        }
-        
+    public String dirigir(String busq){
         if(mapa.containsKey(busq)){
             Handler llave = mapa.get(busq);
-            llave.procesar();
+            return llave.procesar();
         }
+        return null;
     }
 }

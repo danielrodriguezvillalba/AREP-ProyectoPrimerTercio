@@ -7,6 +7,7 @@ package edu.escuelaing.arem.aplicacion;
  */
 import java.net.*;
 import java.io.*;
+import static java.lang.System.out;
 
 public class AppServer {
 
@@ -33,7 +34,7 @@ public class AppServer {
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         clientSocket.getInputStream()));
-        String inputLine, outputLine, inputLin = null;
+        String inputLine, outputLine, inputLin = null,sal = null;
         boolean flag = false;
         while ((inputLine = in.readLine()) != null) {
             System.out.println(inputLine.contains("/apps"));
@@ -63,20 +64,27 @@ public class AppServer {
             }
             System.out.println("Banderaaaaaa");
         } else {
-            handler.dirigir(inputLin);
+            
+            String[] ina = inputLin.split(" ");
+            sal = handler.dirigir(ina[1]);
+            AppServer.interprete(sal);
         }
-        outputLine = "<!DOCTYPE html>"
-                + "<html>"
-                + "<head>"
-                + "<meta charset=\"UTF-8\">"
-                + "<title>Servidor</title>\n"
-                + "</head>"
-                + "</html>" + inputLine;
-
-        out.println(outputLine);
+        
         out.close();
         in.close();
         clientSocket.close();
         serverSocket.close();
     }
+    
+    public static void interprete( String resultado ){
+        String sal = "HTTP/1.1 200 OK\n"
+                + "Content-Type: " + resultado
+                + "\nServer: DanielAREP\n"
+                + "Status: 200\n";
+        out.println(sal); 
+    }
+
+
+        
+    
 }

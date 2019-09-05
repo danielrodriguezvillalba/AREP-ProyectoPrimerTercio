@@ -11,6 +11,6 @@ package edu.escuelaing.arem.handlers;
  */
 public interface Handler {
     
-    public void procesar();
+    public String procesar();
     
 }
