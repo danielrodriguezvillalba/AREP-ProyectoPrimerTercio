@@ -13,16 +13,10 @@ import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
  *
  * @author 2115253
  */
-public class Media {
+public class Media {    
     
-    public static void main( String[] args )
-    {
-        System.out.println("Calculaaa la mediaaaa");
-    }
-    
-    
-    @Web("media")
-    public static void calMedia(){
+    //@Web("media")
+    public static void calcCuadrado(int numero){
         System.out.println("Calculaaa la mediaaaa");
     }
 }

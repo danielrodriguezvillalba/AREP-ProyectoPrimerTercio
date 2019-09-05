@@ -6,16 +6,22 @@
 package edu.escuelaing.arem.aplicacion;
 
 import edu.escuelaing.arem.handlers.Handler;
+import edu.escuelaing.arem.handlers.MediaHandler;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author 2115253
  */
 public class ListaURLHandler {
-    private HashMap<String, Handler> mapa;
+    private Map<String, Handler> mapa;
+    private Handler mediaHandler = new MediaHandler();
     
     public ListaURLHandler(){
-        
+        mapa = new HashMap<>();
+        mapa.put("apps/media", mediaHandler);
     }
+    
+       
 }

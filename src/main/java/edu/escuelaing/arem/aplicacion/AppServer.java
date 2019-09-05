@@ -1,48 +1,61 @@
+package edu.escuelaing.arem.aplicacion;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.escuelaing.arem.aplicacion;
+import java.net.*;
+import java.io.*;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-/**
- *
- * @author 2115253
- */
 public class AppServer {
-    
-    public AppServer(){
-        
-    }
-    public void inicializar(){
+
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = null;
         try {
-            Class prueba = Class.forName("edu.escuelaing.arem.apps.Media");
-            Class[] argTypes = new Class [] {String[].class};
-            //Pide metodos de nombre main con parametros representados en un arreglo de clases
-            Method main = prueba.getDeclaredMethod("main", argTypes);
-            String[] mainArgs = new String[] {"hola"};
-            //si es estatico el metodo el primer campo es nulo, el segundo son los argumentos que usara ese metodo
-            main.invoke(null, (Object)mainArgs);
-            System.out.println(main);
-            
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchMethodException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SecurityException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalArgumentException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InvocationTargetException ex) {
-            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
+            serverSocket = new ServerSocket(35000);
+        } catch (IOException e) {
+            System.err.println("Could not listen on port: 35000.");
+            System.exit(1);
         }
+        Socket clientSocket = null;
+        try {
+            System.out.println("Listo para recibir ...");
+            clientSocket = serverSocket.accept();
+        } catch (IOException e) {
+            System.err.println("Accept failed.");
+            System.exit(1);
+        }
+        
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(
+                        clientSocket.getInputStream()));
+        String inputLine, outputLine;
+        boolean flag = false;
+        while ((inputLine = in.readLine()) != null) {
+            System.out.println(in.readLine());
+            if (inputLine.startsWith("GET")) {flag = true;}
+            else{flag = false;}
+            if (!in.ready()) {
+                break;
+            }
+        }
+        if(flag){
+            System.out.println("Banderaaaaaa");
+        }
+        outputLine = "<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<meta charset=\"UTF-8\">"
+                + "<title>Servidor</title>\n"
+                + "</head>"
+                + "</html>" + inputLine;
+        
+        out.println(outputLine);
+        out.close();
+        in.close();
+        clientSocket.close();
+        serverSocket.close();
     }
 }

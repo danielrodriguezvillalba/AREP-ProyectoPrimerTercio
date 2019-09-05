@@ -10,5 +10,7 @@ package edu.escuelaing.arem.handlers;
  * @author 2115253
  */
 public interface Handler {
-    public Handler procesar(String in);
+    
+    public void procesar(int numero);
+    
 }
