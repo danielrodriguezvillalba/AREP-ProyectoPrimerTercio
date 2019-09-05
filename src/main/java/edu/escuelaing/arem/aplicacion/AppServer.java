@@ -10,7 +10,9 @@ import java.io.*;
 
 public class AppServer {
 
+    private static ListaURLHandler handler;
     public static void main(String[] args) throws IOException {
+        handler = new ListaURLHandler();
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(35000);
@@ -26,23 +28,42 @@ public class AppServer {
             System.err.println("Accept failed.");
             System.exit(1);
         }
-        
+
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(
                         clientSocket.getInputStream()));
-        String inputLine, outputLine;
+        String inputLine, outputLine, inputLin = null;
         boolean flag = false;
         while ((inputLine = in.readLine()) != null) {
-            System.out.println(in.readLine());
-            if (inputLine.startsWith("GET")) {flag = true;}
-            else{flag = false;}
+            System.out.println(inputLine.contains("/apps"));
+            if (inputLine.contains("/apps")) {
+                inputLin = inputLine;
+            }
             if (!in.ready()) {
                 break;
             }
         }
-        if(flag){
+        
+        if (inputLin == null) {
+            String[] temp;
+            temp = inputLin.split(" ");
+            System.out.println(temp[1]);
+            File f = new File(temp[1].substring(1));
+            BufferedReader entrada;
+            String flagg = "";
+            try {
+                entrada = new BufferedReader(new FileReader(f));
+                while (entrada.ready()) {
+                    flagg += entrada.readLine();
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             System.out.println("Banderaaaaaa");
+        } else {
+            handler.dirigir(inputLin);
         }
         outputLine = "<!DOCTYPE html>"
                 + "<html>"
@@ -51,7 +72,7 @@ public class AppServer {
                 + "<title>Servidor</title>\n"
                 + "</head>"
                 + "</html>" + inputLine;
-        
+
         out.println(outputLine);
         out.close();
         in.close();

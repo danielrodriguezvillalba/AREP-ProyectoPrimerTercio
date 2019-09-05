@@ -6,7 +6,7 @@
 package edu.escuelaing.arem.aplicacion;
 
 import edu.escuelaing.arem.handlers.Handler;
-import edu.escuelaing.arem.handlers.MediaHandler;
+import edu.escuelaing.arem.handlers.CuadradoHandler;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,12 +16,28 @@ import java.util.Map;
  */
 public class ListaURLHandler {
     private Map<String, Handler> mapa;
-    private Handler mediaHandler = new MediaHandler();
+    private Handler mediaHandler = new CuadradoHandler();
     
     public ListaURLHandler(){
         mapa = new HashMap<>();
-        mapa.put("apps/media", mediaHandler);
+        mapa.put("apps/cuadrado", mediaHandler);
     }
     
-       
+    public boolean busque(String busq){
+        return mapa.containsKey(busq);
+    }
+    
+    public void dirigir(String busq){
+        System.out.println("busqyewhyjhfdbfjhbfd "+busq);
+        Map llaves = mapa;
+        for(int i = 0; i < mapa.size(); i++){
+            if(busq.contains(mapa.)){
+            }
+        }
+        
+        if(mapa.containsKey(busq)){
+            Handler llave = mapa.get(busq);
+            llave.procesar();
+        }
+    }
 }

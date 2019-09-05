@@ -15,12 +15,12 @@ import java.util.logging.Logger;
  *
  * @author 2115253
  */
-public class MediaHandler implements Handler{
+public class CuadradoHandler implements Handler{
 
     @Override
-    public void procesar(int numero) {
+    public void procesar() {
         try {
-            Class prueba = Class.forName("edu.escuelaing.arem.apps.Media");
+            Class prueba = Class.forName("edu.escuelaing.arem.apps.Cuadrado");
             Class[] argTypes = new Class [] {Integer.class};
             //Pide metodos de nombre main con parametros representados en un arreglo de clases
             Method cuadr = prueba.getDeclaredMethod("calcCuadrado", argTypes);
