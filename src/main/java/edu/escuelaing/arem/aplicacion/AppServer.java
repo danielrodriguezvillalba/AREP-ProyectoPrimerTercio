@@ -47,6 +47,7 @@ public class AppServer {
             inputLine = in.readLine();
             try {
                 String[] ina = inputLine.split(" ");
+                System.out.println("Lineeee"+inputLine);
                 if (inputLine.contains("/apps")) {
                     sal = handler.dirigir(ina[1]).getBytes();
                     out.print(AppServer.interprete(handler.dirigir(ina[1])));
