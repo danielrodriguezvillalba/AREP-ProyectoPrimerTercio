@@ -61,6 +61,7 @@ public class AppServer {
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
+                    continu = false;
                 }
 
                 out.close();
