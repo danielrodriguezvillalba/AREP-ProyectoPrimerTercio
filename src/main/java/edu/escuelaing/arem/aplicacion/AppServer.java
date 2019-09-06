@@ -47,14 +47,14 @@ public class AppServer {
             inputLine = in.readLine();
             try {
                 String[] ina = inputLine.split(" ");
-                System.out.println("Lineeee"+inputLine);
-                if (inputLine.contains("/apps")) {
+                System.out.println(inputLine);
+                if (ina[1].contains("/apps")) {
                     sal = handler.dirigir(ina[1]).getBytes();
                     out.print(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
-                } else if (inputLine.contains(".png")) {
+                } else if (ina[1].contains(".png")) {
                     String path = Paths.get("").toAbsolutePath().toString();
                     Path filePath = Paths.get(path, ina[1]);
                     sal = Files.readAllBytes(filePath);
