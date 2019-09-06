@@ -8,6 +8,9 @@ package edu.escuelaing.arem.aplicacion;
 import java.net.*;
 import java.io.*;
 import static java.lang.System.out;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class AppServer {
 
@@ -51,18 +54,13 @@ public class AppServer {
                     outputSteam.write(sal);
                     outputSteam.flush();
                 } else if (inputLine.contains(".png")) {
-                    String recu = "/resources/imgPrue.png";
-                    sal = leerImagen(recu);
-                    DataOutputStream binaryOut = new DataOutputStream(serverSocket.accept().getOutputStream());
-                    out.println(AppServer.interprete(handler.dirigir(recu)));
-                    System.out.println(sal.length);
-                    binaryOut.writeBytes("HTTP/1.1 200 OK \r\n");
-                    binaryOut.writeBytes("Content-Type: image/png\r\n");
-                    binaryOut.writeBytes("Content-Length: " + sal.length);
-                    binaryOut.writeBytes("\r\n\r\n");
-                    binaryOut.write(sal);
-                    binaryOut.close();
-                    out.println(AppServer.interprete(handler.dirigir(recu)));
+                    String path = Paths.get("").toAbsolutePath().toString();
+                    Path filePath = Paths.get(path, ina[1]);
+                    sal = Files.readAllBytes(filePath);
+                    out.println(AppServer.interprete(handler.dirigir(ina[1])));
+                    OutputStream outputSteam = clientSocket.getOutputStream();
+                    outputSteam.write(sal);
+                    outputSteam.flush();
                 }
 
                 out.close();

@@ -36,6 +36,7 @@ public class ListaURLHandler {
     public String dirigir(String busq) {
         if(mapa.containsKey(busq)){
             Handler llave = mapa.get(busq);
+            System.out.println("Lleegaaa");
             return llave.procesar();
         }
         return null;
