@@ -19,13 +19,15 @@ public class AppServer {
     public void inicializar() throws IOException {
         handler = new ListaURLHandler();
         boolean continu = true;
-         ServerSocket serverSocket = null;
+        ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(getPort());
             } catch (IOException e) {
                 System.err.println("Could not listen on port: 35000.");
                 System.exit(1);
             }
+        do {
+            
             Socket clientSocket = null;
             try {
                 System.out.println("Listo para recibir ...");
@@ -34,8 +36,6 @@ public class AppServer {
                 System.err.println("Accept failed.");
                 System.exit(1);
             }
-        do {
-           
 
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
