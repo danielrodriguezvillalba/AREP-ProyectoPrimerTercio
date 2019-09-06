@@ -5,12 +5,14 @@ package edu.escuelaing.arem.aplicacion;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.awt.image.BufferedImage;
 import java.net.*;
 import java.io.*;
 import static java.lang.System.out;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import javax.imageio.ImageIO;
 
 public class AppServer {
 
@@ -19,15 +21,15 @@ public class AppServer {
     public void inicializar() throws IOException {
         handler = new ListaURLHandler();
         boolean continu = true;
-        ServerSocket serverSocket = null;
+
+        do {
+            ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(getPort());
             } catch (IOException e) {
                 System.err.println("Could not listen on port: 35000.");
                 System.exit(1);
             }
-        do {
-            
             Socket clientSocket = null;
             try {
                 System.out.println("Listo para recibir ...");
@@ -55,13 +57,10 @@ public class AppServer {
                     outputSteam.write(sal);
                     outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
-                    String path = Paths.get("").toAbsolutePath().toString();
-                    Path filePath = Paths.get(path, ina[1]);
-                    sal = Files.readAllBytes(filePath);
-                    out.print(AppServer.interprete(handler.dirigir(ina[1])));
-                    OutputStream outputSteam = clientSocket.getOutputStream();
-                    outputSteam.write(sal);
-                    outputSteam.flush();
+                    handleImage(ina[1], clientSocket.getOutputStream(), out);
+                } else if (ina[1].contains(".ico")) {
+                    out.print("HTTP/1.1 404 NOT FOUND\r\n");
+
                 }
 
                 out.close();
@@ -82,32 +81,31 @@ public class AppServer {
                 + "\nServer: DanielAREP\r\n"
                 + "Status: 200\r\n";
     }
-    
+
     static int getPort() {
-            if (System.getenv() != null) {
-                return Integer.parseInt(System.getenv("PORT"));
-            }
-            return 4567;
+        if (System.getenv("PORT") != null) {
+            return Integer.parseInt(System.getenv("PORT"));
         }
-    
-    public static byte[] leerImagen(String direction) {
-        byte[] finalData = new byte[]{};
+        return 4567;
+    }
 
+    private static void handleImage(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
         try {
-            File graphicResource = new File(direction);
+            BufferedImage image = ImageIO
+                    .read(new File(System.getProperty("user.dir") + element));
+            ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
+            DataOutputStream writeimg = new DataOutputStream(clientOutput);
+            ImageIO.write(image, "jpg", ArrBytes);
+            writeimg.writeBytes("HTTP/1.1 200 OK \r\n");
+            writeimg.writeBytes("Content-Type: image/jpg \r\n");
+            writeimg.writeBytes("Content-Length: " + ArrBytes.toByteArray().length + "\r\n");
+            writeimg.writeBytes("\r\n");
+            writeimg.write(ArrBytes.toByteArray());
+            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);
+        } catch (IOException e) {
 
-            System.out.println(graphicResource.getPath());
-            FileInputStream inputImage = new FileInputStream((graphicResource.getPath()));
-            finalData = new byte[(int) graphicResource.length()];
-            inputImage.read(finalData);
-
-        } catch (FileNotFoundException ex) {
-
-        } catch (IOException ex) {
-            System.err.println("Error en la lectura de el archivo");
         }
-
-        return finalData;
 
     }
+
 }
