@@ -19,9 +19,7 @@ public class AppServer {
     public void inicializar() throws IOException {
         handler = new ListaURLHandler();
         boolean continu = true;
-
-        do {
-            ServerSocket serverSocket = null;
+         ServerSocket serverSocket = null;
             try {
                 serverSocket = new ServerSocket(getPort());
             } catch (IOException e) {
@@ -36,6 +34,8 @@ public class AppServer {
                 System.err.println("Accept failed.");
                 System.exit(1);
             }
+        do {
+           
 
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
