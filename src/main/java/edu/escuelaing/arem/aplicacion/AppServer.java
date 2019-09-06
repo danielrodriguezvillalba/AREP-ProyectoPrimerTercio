@@ -43,15 +43,28 @@ public class AppServer {
             boolean flag = false;
             inputLine = in.readLine();
             try {
+                String[] ina = inputLine.split(" ");
                 if (inputLine.contains("/apps")) {
-                    String[] ina = inputLine.split(" ");
                     sal = handler.dirigir(ina[1]).getBytes();
                     out.println(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
+                } else if (inputLine.contains(".png")) {
+                    String recu = "/resources/imgPrue.png";
+                    sal = leerImagen(recu);
+                    DataOutputStream binaryOut = new DataOutputStream(serverSocket.accept().getOutputStream());
+                    out.println(AppServer.interprete(handler.dirigir(recu)));
+                    System.out.println(sal.length);
+                    binaryOut.writeBytes("HTTP/1.1 200 OK \r\n");
+                    binaryOut.writeBytes("Content-Type: image/png\r\n");
+                    binaryOut.writeBytes("Content-Length: " + sal.length);
+                    binaryOut.writeBytes("\r\n\r\n");
+                    binaryOut.write(sal);
+                    binaryOut.close();
+                    out.println(AppServer.interprete(handler.dirigir(recu)));
                 }
-                
+
                 out.close();
                 in.close();
                 clientSocket.close();
@@ -69,5 +82,26 @@ public class AppServer {
                 + "Content-Type: " + resultado
                 + "\nServer: DanielAREP\r\n"
                 + "Status: 200\r\n";
+    }
+
+    public static byte[] leerImagen(String direction) {
+        byte[] finalData = new byte[]{};
+
+        try {
+            File graphicResource = new File(direction);
+
+            System.out.println(graphicResource.getPath());
+            FileInputStream inputImage = new FileInputStream((graphicResource.getPath()));
+            finalData = new byte[(int) graphicResource.length()];
+            inputImage.read(finalData);
+
+        } catch (FileNotFoundException ex) {
+
+        } catch (IOException ex) {
+            System.err.println("Error en la lectura de el archivo");
+        }
+
+        return finalData;
+
     }
 }
