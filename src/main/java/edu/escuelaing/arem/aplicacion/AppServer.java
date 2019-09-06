@@ -52,7 +52,7 @@ public class AppServer {
                 System.out.println(inputLine);
                 if (ina[1].contains("/apps")) {
                     sal = handler.dirigir(ina[1]).getBytes();
-                    out.print(AppServer.interprete(handler.dirigir(ina[1])));
+                    out.println(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
