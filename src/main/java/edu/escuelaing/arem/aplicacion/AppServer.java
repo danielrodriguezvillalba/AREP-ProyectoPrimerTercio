@@ -23,7 +23,7 @@ public class AppServer {
         do {
             ServerSocket serverSocket = null;
             try {
-                serverSocket = new ServerSocket(35000);
+                serverSocket = new ServerSocket(getPort());
             } catch (IOException e) {
                 System.err.println("Could not listen on port: 35000.");
                 System.exit(1);
@@ -61,7 +61,6 @@ public class AppServer {
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
-                    continu = false;
                 }
 
                 out.close();
@@ -82,7 +81,14 @@ public class AppServer {
                 + "\nServer: DanielAREP\r\n"
                 + "Status: 200\r\n";
     }
-
+    
+    static int getPort() {
+            if (System.getenv() != null) {
+                return Integer.parseInt(System.getenv("PORT"));
+            }
+            return 4567;
+        }
+    
     public static byte[] leerImagen(String direction) {
         byte[] finalData = new byte[]{};
 
