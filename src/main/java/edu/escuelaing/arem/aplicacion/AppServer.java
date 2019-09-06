@@ -16,7 +16,7 @@ public class AppServer {
 
     private static ListaURLHandler handler;
 
-    public static void main(String[] args) throws IOException {
+    public void inicializar() throws IOException {
         handler = new ListaURLHandler();
         boolean continu = true;
 
