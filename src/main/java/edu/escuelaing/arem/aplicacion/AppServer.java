@@ -49,7 +49,7 @@ public class AppServer {
                 String[] ina = inputLine.split(" ");
                 if (inputLine.contains("/apps")) {
                     sal = handler.dirigir(ina[1]).getBytes();
-                    out.println(AppServer.interprete(handler.dirigir(ina[1])));
+                    out.print(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
@@ -57,7 +57,7 @@ public class AppServer {
                     String path = Paths.get("").toAbsolutePath().toString();
                     Path filePath = Paths.get(path, ina[1]);
                     sal = Files.readAllBytes(filePath);
-                    out.println(AppServer.interprete(handler.dirigir(ina[1])));
+                    out.print(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     outputSteam.flush();
