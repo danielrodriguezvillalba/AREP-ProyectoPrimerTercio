@@ -7,7 +7,7 @@
 
 Se Plantea el siguiente diagrama de clases para e problema dado por el profesor.
 
-![Imagenes](https://github.com/danielrodriguezvillalba/AREP-Laboratorio2/blob/master/resources/Diagrama.PNG)
+![Imagenes](https://github.com/danielrodriguezvillalba/AREP-ProyectoPrimerTercio/blob/master/resources/Diagrama.PNG)
 
 ## Aplicacion en funcionamiento
 
