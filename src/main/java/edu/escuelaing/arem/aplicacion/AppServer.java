@@ -12,79 +12,62 @@ import static java.lang.System.out;
 public class AppServer {
 
     private static ListaURLHandler handler;
+
     public static void main(String[] args) throws IOException {
         handler = new ListaURLHandler();
-        ServerSocket serverSocket = null;
-        try {
-            serverSocket = new ServerSocket(35000);
-        } catch (IOException e) {
-            System.err.println("Could not listen on port: 35000.");
-            System.exit(1);
-        }
-        Socket clientSocket = null;
-        try {
-            System.out.println("Listo para recibir ...");
-            clientSocket = serverSocket.accept();
-        } catch (IOException e) {
-            System.err.println("Accept failed.");
-            System.exit(1);
-        }
+        boolean continu = true;
 
-        PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(
-                        clientSocket.getInputStream()));
-        String inputLine, outputLine, inputLin = null,sal = null;
-        boolean flag = false;
-        while ((inputLine = in.readLine()) != null) {
-            System.out.println(inputLine.contains("/apps"));
-            if (inputLine.contains("/apps")) {
-                inputLin = inputLine;
-            }
-            if (!in.ready()) {
-                break;
-            }
-        }
-        
-        if (inputLin == null) {
-            String[] temp;
-            temp = inputLin.split(" ");
-            System.out.println(temp[1]);
-            File f = new File(temp[1].substring(1));
-            BufferedReader entrada;
-            String flagg = "";
+        do {
+            ServerSocket serverSocket = null;
             try {
-                entrada = new BufferedReader(new FileReader(f));
-                while (entrada.ready()) {
-                    flagg += entrada.readLine();
-                }
-
+                serverSocket = new ServerSocket(35000);
             } catch (IOException e) {
-                e.printStackTrace();
+                System.err.println("Could not listen on port: 35000.");
+                System.exit(1);
             }
-            System.out.println("Banderaaaaaa");
-        } else {
-            
-            String[] ina = inputLin.split(" ");
-            sal = handler.dirigir(ina[1]);
-            AppServer.interprete(sal);
-        }
-        
-        out.close();
-        in.close();
-        clientSocket.close();
-        serverSocket.close();
+            Socket clientSocket = null;
+            try {
+                System.out.println("Listo para recibir ...");
+                clientSocket = serverSocket.accept();
+            } catch (IOException e) {
+                System.err.println("Accept failed.");
+                System.exit(1);
+            }
+
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(
+                            clientSocket.getInputStream()));
+            String inputLine, outputLine, inputLin = null;
+            byte[] sal = null;
+            boolean flag = false;
+            inputLine = in.readLine();
+            try {
+                if (inputLine.contains("/apps")) {
+                    String[] ina = inputLine.split(" ");
+                    sal = handler.dirigir(ina[1]).getBytes();
+                    out.println(AppServer.interprete(handler.dirigir(ina[1])));
+                    OutputStream outputSteam = clientSocket.getOutputStream();
+                    outputSteam.write(sal);
+                    outputSteam.flush();
+                }
+                
+                out.close();
+                in.close();
+                clientSocket.close();
+                serverSocket.close();
+            } catch (NullPointerException e) {
+                System.out.println("No existe la clase que esta buscando");
+            }
+
+        } while (continu);
+
     }
-    
-    public static void interprete( String resultado ){
-        String sal = "HTTP/1.1 200 OK\n"
+
+    public static String interprete(String resultado) {
+        return "HTTP/1.1 200 OK\r\n"
                 + "Content-Type: " + resultado
-                + "\nServer: DanielAREP\n"
-                + "Status: 200\n";
-        out.println(sal); 
+                + "\nServer: DanielAREP\r\n"
+                + "Status: 200\r\n";
     }
-
-
-        
-    
 }

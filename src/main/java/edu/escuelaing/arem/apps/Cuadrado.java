@@ -8,23 +8,28 @@ package edu.escuelaing.arem.apps;
 import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
 import static java.lang.System.out;
 
-
-
 /**
  *
  * @author 2115253
  */
-public class Cuadrado {    
-    
+public class Cuadrado {
+
     @Web("media")
-    public static String calcCuadrado(){
+    public static String calcCuadrado() {
         return "<!DOCTYPE html>"
                 + "<html>"
                 + "<head>"
                 + "<meta charset=\"UTF-8\">"
-                + "<title>Pruebaaaaa</title>\n"
+                + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
-                + "</html>" ;
-        
+                + "<body>"
+                +"<form action=cuadradohtml>"
+                + "Numero a calcular cuadrado:<br>"
+                +"<input type=int name= value value=0>"
+                +"<input type=submit>"
+                + "</form>" 
+                + "</body>"
+                + "</html>";
     }
+    
 }
