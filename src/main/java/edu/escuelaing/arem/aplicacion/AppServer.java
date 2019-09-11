@@ -32,7 +32,7 @@ public class AppServer {
         }
             Socket clientSocket = null;
             try {
-                System.out.println("Listo para recibir ...");
+                out.println("Listo para recibir ...");
                 clientSocket = serverSocket.accept();
             } catch (IOException e) {
                 System.err.println("Accept failed.");
@@ -76,10 +76,10 @@ public class AppServer {
     }
 
     public static String interprete(String resultado) {
-        return "HTTP/1.1 200 OK\r\n"
-                + "Content-Type: " + resultado
-                + "\nServer: DanielAREP\r\n"
-                + "Status: 200\r\n";
+        return "HTTP/1.1 200 OK \r\n"
+                + "Content-Type: " + resultado + "\r\n"
+                + "Server: DanielAREP \r\n"
+                + "Status: 200 \r\n";
     }
 
     static int getPort() {
