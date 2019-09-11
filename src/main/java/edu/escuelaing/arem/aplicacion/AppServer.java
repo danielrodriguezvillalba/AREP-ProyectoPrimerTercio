@@ -55,7 +55,7 @@ public class AppServer {
                     out.println(AppServer.interprete(handler.dirigir(ina[1])));
                     OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
-                    outputSteam.flush();
+                    //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), out);
                 } else if (ina[1].contains(".ico")) {
@@ -76,10 +76,10 @@ public class AppServer {
     }
 
     public static String interprete(String resultado) {
-        return "HTTP/1.1 200 OK \r"
-                + "Content-Type: /text/html \r\n"
-                + "\r\n"
-                + resultado;
+        return "HTTP/1.1 200 OK \r\n"
+                + "Content-Type: " + resultado + "\r\n"
+                + "Server: DanielAREP \r\n"
+                + "Status: 200 \r\n";
     }
 
     static int getPort() {
