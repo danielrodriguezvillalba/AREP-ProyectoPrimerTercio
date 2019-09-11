@@ -76,10 +76,10 @@ public class AppServer {
     }
 
     public static String interprete(String resultado) {
-        return "HTTP/1.1 200 OK \r\n"
-                + "Content-Type: " + resultado + "\r\n"
-                + "Server: DanielAREP \r\n"
-                + "Status: 200 \r\n";
+        return "HTTP/1.1 200 OK \r"
+                + "Content-Type: /text/html \r\n"
+                + "\r\n"
+                + resultado;
     }
 
     static int getPort() {

@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* edu.escuelaing.arem.aplicacion.Controlador
+web: java -cp target/classes;target/dependency/* edu.escuelaing.arem.aplicacion.Controlador
