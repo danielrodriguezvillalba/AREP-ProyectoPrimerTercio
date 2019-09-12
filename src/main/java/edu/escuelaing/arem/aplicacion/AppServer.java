@@ -67,7 +67,7 @@ public class AppServer {
                             + "<title>Recurso no encontrado</title>"
                             + "</head>"
                             + "<body>"
-                            + "recurso invalido"
+                            + "Recurso no encontrado"
                             + "</body>"
                             + "</html>));").getBytes());
 
@@ -82,7 +82,7 @@ public class AppServer {
                             + "<title>Recurso no encontrado</title>"
                             + "</head>"
                             + "<body>"
-                            + "Content of the document......"
+                            + "Recurso no encontrado."
                             + "</body>"
                             + "</html>));").getBytes());
                 }
@@ -100,12 +100,6 @@ public class AppServer {
 
     }
 
-    public static String interprete(String resultado) {
-        return "HTTP/1.1 200 OK \r\n"
-                + "Content-Type: " + resultado + "\r\n"
-                + "Server: DanielAREP \r\n"
-                + "Status: 200 \r\n";
-    }
 
     static int getPort() {
         if (System.getenv("PORT") != null) {
@@ -120,10 +114,9 @@ public class AppServer {
                     .read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
             DataOutputStream writeimg = new DataOutputStream(clientOutput);
-            ImageIO.write(image, "jpg", ArrBytes);
+            ImageIO.write(image, "png", ArrBytes);
             writeimg.writeBytes("HTTP/1.1 200 OK \r\n");
-            writeimg.writeBytes("Content-Type: image/jpg \r\n");
-            writeimg.writeBytes("Content-Length: " + ArrBytes.toByteArray().length + "\r\n");
+            writeimg.writeBytes("Content-Type: image/png \r\n");
             writeimg.writeBytes("\r\n");
             writeimg.write(ArrBytes.toByteArray());
             System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);

@@ -27,7 +27,6 @@ public class Cuadrado {
                 + "</head>"
                 + "<body>"
                 + "<form action=./cuadrado.html>"
-                + "Respuesta ="
                 + "Numero a calcular cuadrado:<br>"
                 + "<input type=int name= value value=0>"
                 + "<input type=submit>"
