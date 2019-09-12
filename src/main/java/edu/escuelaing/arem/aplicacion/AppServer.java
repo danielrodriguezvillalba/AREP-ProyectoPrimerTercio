@@ -59,11 +59,9 @@ public class AppServer {
                 String[] clas = ina[1].split("/");
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
-                        System.out.println(clas[2]);
                         Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2] );
-                        System.out.println(c.getMethods().length);
                         for (Method metodo : c.getMethods()) {
-                            System.out.println(c.getMethods().length);
+                            System.out.println(metodo.getName());
                             if (metodo.isAnnotationPresent(Web.class)) {
                                 System.out.println("entra2");
                                 Handler metod = new methodHandler(metodo);
