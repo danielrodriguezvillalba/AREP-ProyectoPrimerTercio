@@ -16,21 +16,24 @@ public class Cuadrado {
 
     @Web("media")
     public static String calcCuadrado() {
-        return "<!DOCTYPE html>"
+        return ("HTTP/1.1 200 OK \r\n"
+                + "Content-Type: text/html; charset=\"utf-8\" \r\n"
+                + "\r\n"
+                + "<!DOCTYPE html>"
                 + "<html>"
                 + "<head>"
                 + "<meta charset=\"UTF-8\">"
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                +"<form action=./cuadrado.html>"
-                + "Respuesta =" 
+                + "<form action=./cuadrado.html>"
+                + "Respuesta ="
                 + "Numero a calcular cuadrado:<br>"
-                +"<input type=int name= value value=0>"
-                +"<input type=submit>"
-                + "</form>" 
+                + "<input type=int name= value value=0>"
+                + "<input type=submit>"
+                + "</form>"
                 + "</body>"
-                + "</html>";
+                + "</html>");
     }
-    
+
 }
