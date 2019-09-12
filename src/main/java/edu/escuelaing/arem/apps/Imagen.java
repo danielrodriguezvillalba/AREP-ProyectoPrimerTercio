@@ -22,7 +22,7 @@ public class Imagen {
                 +"<title>McClaren Imagen</title>"
                 +"</head>"
                 +"<body>"
-                +"<div align=center><img src=./imgPrue.png/> </div>"
+                
 		+"</body>"
                 +"</html>";
     }
