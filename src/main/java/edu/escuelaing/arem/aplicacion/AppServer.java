@@ -107,9 +107,9 @@ public class AppServer {
                 }
 
             } catch (NullPointerException e) {
-                out.print("No existe la clase que esta buscando");
+                out.print("No existe lo que pide que esta buscando");
             } catch (ClassNotFoundException ex) {
-                Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
+                out.print("No existe la clase que esta buscando");
             } finally {
                 out.close();
                 in.close();
