@@ -61,7 +61,7 @@ public class AppServer {
                     if (!handler.busque(ina[1])) {
                         Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2] );
                         for (Method metodo : c.getMethods()) {
-                            System.out.println(metodo.getName());
+                            System.out.println(metodo.isAnnotationPresent(Web.class));
                             if (metodo.isAnnotationPresent(Web.class)) {
                                 System.out.println("entra2");
                                 Handler metod = new methodHandler(metodo);
