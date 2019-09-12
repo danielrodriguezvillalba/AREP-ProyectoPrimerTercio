@@ -70,8 +70,9 @@ public class AppServer {
                             + "Recurso no encontrado"
                             + "</body>"
                             + "</html>").getBytes());
-
-                } else {
+                 
+                }
+                else {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
                             + "Content-Type: text/html; charset=\"utf-8\" \r\n"
                             + "\r\n"
@@ -129,7 +130,7 @@ public class AppServer {
             writeimg.writeBytes("Content-Type: image/png \r\n");
             writeimg.writeBytes("\r\n");
             writeimg.write(ArrBytes.toByteArray());
-            System.out.println(System.getProperty("user.dir") + "resources/imagenes/" + element);
+            System.out.println(System.getProperty("user.dir") + "/resources/imagenes/" + element);
         } catch (IOException e) {
         }
 
