@@ -114,6 +114,7 @@ public class AppServer {
         return 4567;
     }
 
+    
     private static void handleImage(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
