@@ -8,7 +8,6 @@ package edu.escuelaing.arem.aplicacion;
 import edu.escuelaing.arem.handlers.Handler;
 import edu.escuelaing.arem.handlers.impl.CuadradoHandler;
 import edu.escuelaing.arem.handlers.impl.HtmlHandler;
-import edu.escuelaing.arem.handlers.impl.ImageHandler;
 import java.util.HashMap;
 import java.util.Map;
 
