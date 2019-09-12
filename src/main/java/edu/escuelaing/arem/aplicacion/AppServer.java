@@ -55,7 +55,7 @@ public class AppServer {
                     outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
-                    handleImage(ina[1], clientSocket.getOutputStream(), outputSteam);
+                    handleImage(ina[1], clientSocket.getOutputStream(), out);
                 } else if (ina[1].contains(".ico")) {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
                             + "Content-Type: text/html; charset=\"utf-8\" \r\n"
@@ -114,7 +114,7 @@ public class AppServer {
         return 4567;
     }
 
-    private static void handleImage(String element, OutputStream clientOutput, OutputStream out) throws IOException {
+    private static void handleImage(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
