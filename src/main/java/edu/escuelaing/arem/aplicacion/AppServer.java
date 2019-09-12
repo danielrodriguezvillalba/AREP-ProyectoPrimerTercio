@@ -72,7 +72,7 @@ public class AppServer {
                             + "</html>));").getBytes());
 
                 } else {
-                    outputSteam.write(("HTTP/1.1 200 OK \r\n"
+                    outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
                             + "Content-Type: text/html; charset=utf-8"
                             + "\r\n"
                             + "<!DOCTYPE html>"
