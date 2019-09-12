@@ -20,13 +20,11 @@ public class ListaURLHandler {
     private Map<String, Handler> mapa;
     private Handler cuadradoHandler = new CuadradoHandler();
     private Handler htmlHandler = new HtmlHandler();
-    private Handler imgHandler = new ImageHandler();
     
     public ListaURLHandler(){
         mapa = new HashMap<>();
         mapa.put("/apps/cuadrado", cuadradoHandler);
         mapa.put("/apps/cuadradohtml", htmlHandler);
-        mapa.put("/resources/imgPrue.png", imgHandler);
     }
     
     public boolean busque(String busq){
