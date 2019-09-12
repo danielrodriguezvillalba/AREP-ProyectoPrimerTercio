@@ -5,7 +5,7 @@ package edu.escuelaing.arem.aplicacion;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
+import edu.escuelaing.arem.anotaciones.Web;
 import edu.escuelaing.arem.handlers.Handler;
 import edu.escuelaing.arem.handlers.impl.methodHandler;
 import java.awt.image.BufferedImage;
@@ -33,7 +33,7 @@ public class AppServer {
             try {
                 serverSocket = new ServerSocket(getPort());
             } catch (IOException e) {
-                System.err.println("Could not listen on port: 35000.");
+                System.err.println("Could not listen on port: "+getPort());
                 System.exit(1);
             }
             Socket clientSocket = null;

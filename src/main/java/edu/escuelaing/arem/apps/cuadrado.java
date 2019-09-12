@@ -5,7 +5,7 @@
  */
 package edu.escuelaing.arem.apps;
 
-import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
+import edu.escuelaing.arem.anotaciones.Web;
 import static java.lang.System.out;
 
 /**
