@@ -62,7 +62,7 @@ public class AppServer {
                             + "\r\n"
                             + "<!DOCTYPE html>"
                             + "<html>"
-                            + "<head>" 
+                            + "<head>"
                             + "<meta charset=UTF-8>"
                             + "<title>Recurso no encontrado</title>"
                             + "</head>"
@@ -100,7 +100,6 @@ public class AppServer {
 
     }
 
-
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
@@ -110,16 +109,20 @@ public class AppServer {
 
     private static void handleImage(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
         try {
-            BufferedImage image = ImageIO
-                    .read(new File(System.getProperty("user.dir") + element));
+            BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
             DataOutputStream writeimg = new DataOutputStream(clientOutput);
+            String imagen = "HTTP/1.1 404 Not Found \r\n"
+                    + "Content-Type: text/html; charset=\"utf-8\" \r\n"
+                    + "\r\n"
+                    + element;
+            out.write(imagen);/*
             ImageIO.write(image, "png", ArrBytes);
             writeimg.writeBytes("HTTP/1.1 200 OK \r\n");
             writeimg.writeBytes("Content-Type: image/png \r\n");
             writeimg.writeBytes("\r\n");
             writeimg.write(ArrBytes.toByteArray());
-            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);
+            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);*/
         } catch (IOException e) {
 
         }
