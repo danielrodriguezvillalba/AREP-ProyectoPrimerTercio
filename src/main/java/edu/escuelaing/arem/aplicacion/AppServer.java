@@ -57,11 +57,11 @@ public class AppServer {
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), out);
                 } else if (ina[1].contains(".ico")) {
-                    outputSteam.write(("HTTP/1.1 recurso invalido \r\n"
+                    outputSteam.write(("HTTP/1.1 HTTP/1.1 200 OK\r\n"
                             + "Content-Type: text/html; charset=utf-8"
                             + "<!DOCTYPE html>"
                             + "<html>"
-                            + "<head>"
+                            + "<head>" 
                             + "<meta charset=UTF-8>"
                             + "<title>Title of the document</title>"
                             + "</head>"
@@ -71,7 +71,7 @@ public class AppServer {
                             + "</html>));").getBytes());
 
                 } else {
-                    outputSteam.write(("HTTP/1.1 recurso invalido\r\n"
+                    outputSteam.write(("HTTP/1.1 HTTP/1.1 200 OK\r\n"
                             + "Content-Type: text/html; charset=utf-8"
                             + "<!DOCTYPE html>"
                             + "<html>"
