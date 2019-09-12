@@ -69,7 +69,7 @@ public class AppServer {
                             + "<body>"
                             + "Recurso no encontrado"
                             + "</body>"
-                            + "</html>));").getBytes());
+                            + "</html>").getBytes());
 
                 } else {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
@@ -84,7 +84,7 @@ public class AppServer {
                             + "<body>"
                             + "Recurso no encontrado."
                             + "</body>"
-                            + "</html>));").getBytes());
+                            + "</html>").getBytes());
                 }
 
             } catch (NullPointerException e) {
@@ -131,7 +131,6 @@ public class AppServer {
             writeimg.write(ArrBytes.toByteArray());
             System.out.println(System.getProperty("user.dir") + "resources/imagenes/" + element);
         } catch (IOException e) {
-            System.out.println("NADAAA");
         }
 
     }
