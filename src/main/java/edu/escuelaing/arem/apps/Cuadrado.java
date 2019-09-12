@@ -23,7 +23,7 @@ public class Cuadrado {
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                + "<form action=\"/cuadrado.html\">"
+                + "<form action=\"/apps/cuadrado.html\">"
                 + "Numero a calcular cuadrado:<br>"
                 + "<input type=int name= value value=0>"
                 + "<input type=submit>"
