@@ -52,7 +52,7 @@ public class AppServer {
                 String[] ina = inputLine.split(" ");
                 System.out.println(inputLine);
                 if (ina[1].contains("/apps")) {
-                    outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
+                    outputSteam.write(handler.dirigir(ina[1]).getBytes());
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), outputSteam);
@@ -121,15 +121,14 @@ public class AppServer {
             DataOutputStream writeimg = new DataOutputStream(clientOutput);
             String imagen = "HTTP/1.1 404 Not Found \r\n"
                     + "Content-Type: text/html; charset=\"utf-8\" \r\n"
-                    + "\r\n"
-                    + element;
-            out.write(imagen.getBytes());/*
-            ImageIO.write(image, "png", ArrBytes);
+                    + "\r\n";
+            //out.write(imagen.getBytes());
+            ImageIO.write(image, "PNG", ArrBytes);
             writeimg.writeBytes("HTTP/1.1 200 OK \r\n");
             writeimg.writeBytes("Content-Type: image/png \r\n");
             writeimg.writeBytes("\r\n");
             writeimg.write(ArrBytes.toByteArray());
-            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);*/
+            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);
         } catch (IOException e) {
 
         }
