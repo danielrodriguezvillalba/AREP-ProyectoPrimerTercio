@@ -56,7 +56,7 @@ public class AppServer {
             try {
                 OutputStream outputSteam = clientSocket.getOutputStream();
                 String[] ina = inputLine.split(" ");
-                String[] clas = inputLine.split("/");
+                String[] clas = ina[1].split("/");
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
                         System.out.println(clas[2]);
