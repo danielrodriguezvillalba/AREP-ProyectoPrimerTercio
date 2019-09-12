@@ -107,7 +107,7 @@ public class AppServer {
         return 4567;
     }
 
-    private static void handleImage(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
+    private static void handleImage(String element, OutputStream clientOutput,  OutputStream out) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();
@@ -116,7 +116,7 @@ public class AppServer {
                     + "Content-Type: text/html; charset=\"utf-8\" \r\n"
                     + "\r\n"
                     + element;
-            out.write(imagen);/*
+            out.write(imagen.getBytes());/*
             ImageIO.write(image, "png", ArrBytes);
             writeimg.writeBytes("HTTP/1.1 200 OK \r\n");
             writeimg.writeBytes("Content-Type: image/png \r\n");
