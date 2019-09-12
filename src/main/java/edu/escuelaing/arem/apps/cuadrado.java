@@ -12,7 +12,7 @@ import static java.lang.System.out;
  *
  * @author 2115253
  */
-public class Cuadrado {
+public class cuadrado {
 
     @Web("media")
     public static String calcCuadrado() {
