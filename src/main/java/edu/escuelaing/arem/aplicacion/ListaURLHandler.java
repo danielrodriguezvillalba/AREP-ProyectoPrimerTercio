@@ -16,11 +16,9 @@ import java.util.Map;
  */
 public class ListaURLHandler {
     private Map<String, Handler> mapa;
-    private Handler cuadradoHandler = new CuadradoHandler();
     
     public ListaURLHandler(){
         mapa = new HashMap<>();
-        mapa.put("/apps/cuadrado", cuadradoHandler);
     }
     
     public boolean busque(String busq){
@@ -30,6 +28,7 @@ public class ListaURLHandler {
     public void put(String key, Handler value){
         mapa.put(key, value);
     }
+    
     public String dirigir(String busq) {
         if(mapa.containsKey(busq)){
             Handler llave = mapa.get(busq);

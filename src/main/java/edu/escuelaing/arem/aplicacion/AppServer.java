@@ -56,11 +56,12 @@ public class AppServer {
             try {
                 OutputStream outputSteam = clientSocket.getOutputStream();
                 String[] ina = inputLine.split(" ");
-                String[] clase = inputLine.split("/");
+                String[] clas = inputLine.split("/");
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
-                        Class<?> c = Class.forName("edu.escuelaing.arep.apps" + clase[1] );
+                        Class<?> c = Class.forName("edu.escuelaing.arep.apps" + clas[1] );
                         for (Method metodo : c.getMethods()) {
+                            System.out.println(c.getMethods().length);
                             if (metodo.isAnnotationPresent(Web.class)) {
                                 System.out.println("entra2");
                                 Handler metod = new methodHandler(metodo);
