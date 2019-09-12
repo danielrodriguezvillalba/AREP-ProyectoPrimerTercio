@@ -59,6 +59,7 @@ public class AppServer {
                 String[] clas = inputLine.split("/");
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
+                        System.out.println("entra1");
                         Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[1] );
                         for (Method metodo : c.getMethods()) {
                             System.out.println(c.getMethods().length);
