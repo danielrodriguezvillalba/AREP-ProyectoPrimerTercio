@@ -59,6 +59,7 @@ public class AppServer {
                 } else if (ina[1].contains(".ico")) {
                     outputSteam.write(("HTTP/1.1 200 OK\r\n"
                             + "Content-Type: text/html; charset=utf-8"
+                            + "\r\n"
                             + "<!DOCTYPE html>"
                             + "<html>"
                             + "<head>" 
@@ -73,6 +74,7 @@ public class AppServer {
                 } else {
                     outputSteam.write(("HTTP/1.1 200 OK\r\n"
                             + "Content-Type: text/html; charset=utf-8"
+                            + "\r\n"
                             + "<!DOCTYPE html>"
                             + "<html>"
                             + "<head>"
