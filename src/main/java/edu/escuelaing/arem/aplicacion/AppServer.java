@@ -52,7 +52,7 @@ public class AppServer {
                 String[] ina = inputLine.split(" ");
                 System.out.println(inputLine);
                 if (ina[1].contains("/apps")) {
-                    outputSteam.write(handler.dirigir(ina[1]).getBytes());
+                    outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), outputSteam);
