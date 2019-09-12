@@ -21,15 +21,15 @@ public class AppServer {
     public void inicializar() throws IOException {
         handler = new ListaURLHandler();
         boolean continu = true;
-        
+
         do {
             ServerSocket serverSocket = null;
-        try {
-            serverSocket = new ServerSocket(getPort());
-        } catch (IOException e) {
-            System.err.println("Could not listen on port: 35000.");
-            System.exit(1);
-        }
+            try {
+                serverSocket = new ServerSocket(getPort());
+            } catch (IOException e) {
+                System.err.println("Could not listen on port: 35000.");
+                System.exit(1);
+            }
             Socket clientSocket = null;
             try {
                 out.println("Listo para recibir ...");
@@ -48,27 +48,50 @@ public class AppServer {
             boolean flag = false;
             inputLine = in.readLine();
             try {
+                OutputStream outputSteam = clientSocket.getOutputStream();
                 String[] ina = inputLine.split(" ");
                 System.out.println(inputLine);
                 if (ina[1].contains("/apps")) {
                     sal = handler.dirigir(ina[1]).getBytes();
                     out.println(AppServer.interprete(handler.dirigir(ina[1])));
-                    OutputStream outputSteam = clientSocket.getOutputStream();
                     outputSteam.write(sal);
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), out);
                 } else if (ina[1].contains(".ico")) {
-                    out.print("HTTP/1.1 404 NOT FOUND\r\n");
+                    outputSteam.write(("HTTP/1.1 404 NOT FOUND\r\n"
+                            + "<!DOCTYPE html>"
+                            + "<html>"
+                            + "<head>"
+                            + "<meta charset=UTF-8>"
+                            + "<title>Title of the document</title>"
+                            + "</head>"
+                            + "<body>"
+                            + "Content of the document......"
+                            + "</body>"
+                            + "</html>));").getBytes());
 
+                } else {
+                    outputSteam.write(("HTTP/1.1 404 NOT FOUND\r\n"
+                            + "<!DOCTYPE html>"
+                            + "<html>"
+                            + "<head>"
+                            + "<meta charset=UTF-8>"
+                            + "<title>Title of the document</title>"
+                            + "</head>"
+                            + "<body>"
+                            + "Content of the document......"
+                            + "</body>"
+                            + "</html>));").getBytes());
                 }
 
+            } catch (NullPointerException e) {
+                out.print("No existe la clase que esta buscando");
+            } finally {
                 out.close();
                 in.close();
                 clientSocket.close();
                 serverSocket.close();
-            } catch (NullPointerException e) {
-                System.out.println("No existe la clase que esta buscando");
             }
 
         } while (continu);
@@ -103,9 +126,9 @@ public class AppServer {
             writeimg.write(ArrBytes.toByteArray());
             System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);
         } catch (IOException e) {
-            
+
         }
 
     }
-   
+
 }
