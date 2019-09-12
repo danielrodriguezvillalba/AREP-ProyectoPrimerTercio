@@ -130,7 +130,7 @@ public class AppServer {
             writeimg.write(ArrBytes.toByteArray());
             System.out.println(System.getProperty("user.dir") + "resources/imagenes/" + element);
         } catch (IOException e) {
-
+            System.out.println("NADAAA");
         }
 
     }
