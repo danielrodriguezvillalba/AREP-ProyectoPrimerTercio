@@ -60,7 +60,7 @@ public class AppServer {
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
                         System.out.println(clas[1]);
-                        Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[1] );
+                        Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2] );
                         System.out.println(c.getMethods().length);
                         for (Method metodo : c.getMethods()) {
                             System.out.println(c.getMethods().length);
