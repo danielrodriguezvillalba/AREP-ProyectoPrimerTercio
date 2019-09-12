@@ -59,7 +59,7 @@ public class AppServer {
                 String[] clas = inputLine.split("/");
                 if (ina[1].contains("/apps")) {
                     if (!handler.busque(ina[1])) {
-                        Class<?> c = Class.forName("edu.escuelaing.arep.apps" + clas[1] );
+                        Class<?> c = Class.forName("edu.escuelaing.arep.apps." + clas[1] );
                         for (Method metodo : c.getMethods()) {
                             System.out.println(c.getMethods().length);
                             if (metodo.isAnnotationPresent(Web.class)) {
@@ -70,7 +70,9 @@ public class AppServer {
 
                         }
                     } else {
-                        outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
+                        Handler h = handler.get(ina[1]);
+                        String res = h.procesar();
+                        outputSteam.write(imprima(res).getBytes());
                     }
 
                     //outputSteam.flush();

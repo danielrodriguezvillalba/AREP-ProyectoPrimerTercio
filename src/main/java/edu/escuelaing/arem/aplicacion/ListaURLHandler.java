@@ -6,7 +6,6 @@
 package edu.escuelaing.arem.aplicacion;
 
 import edu.escuelaing.arem.handlers.Handler;
-import edu.escuelaing.arem.handlers.impl.CuadradoHandler;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,6 +26,10 @@ public class ListaURLHandler {
     
     public void put(String key, Handler value){
         mapa.put(key, value);
+    }
+    
+    public Handler get(String key){
+        return mapa.get(key);
     }
     
     public String dirigir(String busq) {
