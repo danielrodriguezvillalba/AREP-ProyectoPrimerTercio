@@ -52,7 +52,7 @@ public class AppServer {
                 String[] ina = inputLine.split(" ");
                 System.out.println(inputLine);
                 if (ina[1].contains("/apps")) {
-                    outputSteam.write(handler.dirigir(ina[1]).getBytes());
+                    outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     handleImage(ina[1], clientSocket.getOutputStream(), outputSteam);
@@ -100,6 +100,13 @@ public class AppServer {
 
     }
 
+    private String imprima(String param) {
+        return "HTTP/1.1 200 OK \r\n"
+                + "Content-Type: text/html; charset=\"utf-8\" \r\n"
+                + "\r\n"
+                + param;
+    }
+
     static int getPort() {
         if (System.getenv("PORT") != null) {
             return Integer.parseInt(System.getenv("PORT"));
@@ -107,7 +114,7 @@ public class AppServer {
         return 4567;
     }
 
-    private static void handleImage(String element, OutputStream clientOutput,  OutputStream out) throws IOException {
+    private static void handleImage(String element, OutputStream clientOutput, OutputStream out) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
             ByteArrayOutputStream ArrBytes = new ByteArrayOutputStream();

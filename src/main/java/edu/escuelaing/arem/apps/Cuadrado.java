@@ -16,10 +16,7 @@ public class Cuadrado {
 
     @Web("media")
     public static String calcCuadrado() {
-        return ("HTTP/1.1 200 OK \r\n"
-                + "Content-Type: text/html; charset=\"utf-8\" \r\n"
-                + "\r\n"
-                + "<!DOCTYPE html>"
+        return ("<!DOCTYPE html>"
                 + "<html>"
                 + "<head>"
                 + "<meta charset=\"UTF-8\">"
