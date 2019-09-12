@@ -27,6 +27,9 @@ public class ListaURLHandler {
         return mapa.containsKey(busq);
     }
     
+    public void put(String key, Handler value){
+        mapa.put(key, value);
+    }
     public String dirigir(String busq) {
         if(mapa.containsKey(busq)){
             Handler llave = mapa.get(busq);

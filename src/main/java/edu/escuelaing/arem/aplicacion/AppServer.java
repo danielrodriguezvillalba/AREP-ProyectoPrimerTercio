@@ -5,13 +5,19 @@ package edu.escuelaing.arem.aplicacion;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import edu.escuelaing.arem.anotaciones.WebAnnotation.Web;
+import edu.escuelaing.arem.handlers.Handler;
+import edu.escuelaing.arem.handlers.impl.methodHandler;
 import java.awt.image.BufferedImage;
 import java.net.*;
 import java.io.*;
 import static java.lang.System.out;
+import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 public class AppServer {
@@ -50,10 +56,22 @@ public class AppServer {
             try {
                 OutputStream outputSteam = clientSocket.getOutputStream();
                 String[] ina = inputLine.split(" ");
-                System.out.println(inputLine);
+                String[] clase = inputLine.split("/");
                 if (ina[1].contains("/apps")) {
-                    System.out.println(ina[1]);
-                    outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
+                    if (!handler.busque(ina[1])) {
+                        Class<?> c = Class.forName("edu.escuelaing.arep.apps" + clase[1] );
+                        for (Method metodo : c.getMethods()) {
+                            if (metodo.isAnnotationPresent(Web.class)) {
+                                System.out.println("entra2");
+                                Handler metod = new methodHandler(metodo);
+                                handler.put("/app/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
+                            }
+
+                        }
+                    } else {
+                        outputSteam.write(imprima(handler.dirigir(ina[1])).getBytes());
+                    }
+
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
                     imagen(ina[1], clientSocket.getOutputStream(), out);
@@ -71,9 +89,8 @@ public class AppServer {
                             + "Recurso no encontrado"
                             + "</body>"
                             + "</html>").getBytes());
-                 
-                }
-                else {
+
+                } else {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
                             + "Content-Type: text/html; charset=\"utf-8\" \r\n"
                             + "\r\n"
@@ -91,6 +108,8 @@ public class AppServer {
 
             } catch (NullPointerException e) {
                 out.print("No existe la clase que esta buscando");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 out.close();
                 in.close();
@@ -116,7 +135,6 @@ public class AppServer {
         return 4567;
     }
 
-    
     private static void imagen(String element, OutputStream clientOutput, PrintWriter out) throws IOException {
         try {
             BufferedImage image = ImageIO.read(new File(System.getProperty("user.dir") + element));
