@@ -128,7 +128,7 @@ public class AppServer {
             writeimg.writeBytes("Content-Type: image/png \r\n");
             writeimg.writeBytes("\r\n");
             writeimg.write(ArrBytes.toByteArray());
-            System.out.println(System.getProperty("user.dir") + "\\recursos\\imagenes\\" + element);
+            System.out.println(System.getProperty("user.dir") + "\\resources\\imagenes\\" + element);
         } catch (IOException e) {
 
         }

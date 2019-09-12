@@ -22,7 +22,7 @@ public class ImageHandler implements Handler{
     public String procesar() {
         try {
             Class prueba = Class.forName("edu.escuelaing.arem.apps.Imagen");
-            Class[] argTypes = new Class [] {Integer.class};
+            Class[] argTypes = new Class [] {String.class};
             //Pide metodos de nombre main con parametros representados en un arreglo de clases
             Method img = prueba.getDeclaredMethod("dibuje", null);
             //si es estatico el metodo el primer campo es nulo, el segundo son los argumentos que usara ese metodo
