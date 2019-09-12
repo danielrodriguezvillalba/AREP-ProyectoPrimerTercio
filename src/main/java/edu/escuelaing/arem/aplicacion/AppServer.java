@@ -55,7 +55,7 @@ public class AppServer {
                     outputSteam.write(handler.dirigir(ina[1]).getBytes());
                     //outputSteam.flush();
                 } else if (ina[1].contains(".png")) {
-                    handleImage(ina[1], clientSocket.getOutputStream(), out);
+                    handleImage(ina[1], clientSocket.getOutputStream(), outputSteam);
                 } else if (ina[1].contains(".ico")) {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
                             + "Content-Type: text/html; charset=\"utf-8\" \r\n"
