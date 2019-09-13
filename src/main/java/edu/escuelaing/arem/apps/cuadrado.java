@@ -24,15 +24,15 @@ public class cuadrado {
                 + "</head>"
                 + "<body>"
                 + "<form action=\"/apps/cuadrado/eleve\">"
-                + "Numero a calcular cuadrado:<br>"
+                + "Numero a calcular su cuadrado:<br>"
                 + "<input type=int name= value value=0>"
                 + "<input type=submit>"
                 + "</form>"
                 + "</body>"
                 + "</html>");
     }
-    @Web("media")
-    public static String calcMedia() {
+    @Web("division")
+    public static String calcDiv() {
         return ("<!DOCTYPE html>"
                 + "<html>"
                 + "<head>"
@@ -40,7 +40,7 @@ public class cuadrado {
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                + "<form action=\"/apps/cuadrado/eleve\" method=\"get\">"
+                + "<form action=\"/apps/cuadrado/divida\" method=\"get\">"
                 + "Numero a calcular para prueba de la media:<br>"
                 + "<input type=\"int\" name= \"value\" value=0>"
                 + "<input type=\"submit\">"
@@ -58,6 +58,18 @@ public class cuadrado {
                 "<body>" + 
                 "<h2> El numero al cuadrado es : "
                 + Integer.toString((int) Math.pow(num, 2))
+                + "</h2>" + "</body>" + "</html>";
+    }
+    
+    @Web("divida")
+    public static String divida(String n1) {
+        int num = Integer.parseInt(n1);
+        return "<!DOCTYPE html>"
+                +"<html>" + 
+                "<head/>" + 
+                "<body>" + 
+                "<h2> El numero al cuadrado es : "
+                + Integer.toString(num/2)
                 + "</h2>" + "</body>" + "</html>";
     }
 }
