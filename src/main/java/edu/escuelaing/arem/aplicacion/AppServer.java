@@ -77,7 +77,7 @@ public class AppServer {
                 } else if (ina[1].contains(".png")) {
                     imagen(ina[1], clientSocket.getOutputStream(), out);
                 } else if (ina[1].contains("?")) {
-                    String[] prue = inputLine.split("?");
+                    String[] prue = ina[1].split("?");
                     System.out.println("PRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!" + prue[1]);
                 }else if (ina[1].contains(".ico")) {
                     outputSteam.write(("HTTP/1.1 404 Not Found \r\n"
