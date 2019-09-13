@@ -40,7 +40,7 @@ public class cuadrado {
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                + "<form action=\"/apps/cuadrado/sumar\" method=\"get\">"
+                + "<form action=\"/apps/cuadrado\" method=\"get\">"
                 + "Numero a calcular para prueba de la media:<br>"
                 + "<input type=\"int\" name= \"value\" value=0>"
                 + "<input type=\"submit\">"
