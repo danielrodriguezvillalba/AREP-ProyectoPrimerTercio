@@ -14,7 +14,7 @@ import static java.lang.System.out;
  */
 public class cuadrado {
 
-    @Web("media")
+    @Web("cuadrado")
     public static String calcCuadrado() {
         return ("<!DOCTYPE html>"
                 + "<html>"

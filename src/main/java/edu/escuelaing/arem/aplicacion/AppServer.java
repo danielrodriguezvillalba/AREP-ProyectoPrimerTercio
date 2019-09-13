@@ -62,7 +62,6 @@ public class AppServer {
                         Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2] );
                         for (Method metodo : c.getMethods()) {
                             if (metodo.isAnnotationPresent(Web.class)) {
-                                System.out.println("/app/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value());
                                 Handler metod = new methodHandler(metodo);
                                 handler.put("/apps/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
                             }
