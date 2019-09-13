@@ -9,11 +9,8 @@ package edu.escuelaing.arem.anotaciones;
  *
  * @author 2115253
  */
+public @interface Web {
 
+    String value();
 
-    public @interface Web {
-
-        String value();
-
-    }
-
+}
