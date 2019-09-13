@@ -69,12 +69,12 @@ public class AppServer {
                                     Handler metod = new methodHandler(metodo);
                                     handler.put("/apps/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
                                 }
-                                
                             }
                         }
-                        System.out.println(ina[1]);
-                        Handler h = handler.get(ina[1]);
-                        String res = h.procesarConParametros(prue);
+                        String[] antParam = ina[1].split("?");
+                        System.out.println(antParam[0]);
+                        Handler h = handler.get(antParam[0]);
+                        String res = h.procesarConParametros(param);
                         outputSteam.write(imprima(res).getBytes());
                     } else {
                         if (!handler.busque(ina[1])) {
