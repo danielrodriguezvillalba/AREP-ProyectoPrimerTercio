@@ -31,5 +31,22 @@ public class cuadrado {
                 + "</body>"
                 + "</html>");
     }
+    @Web("media")
+    public static String calcCuadra() {
+        return ("<!DOCTYPE html>"
+                + "<html>"
+                + "<head>"
+                + "<meta charset=\"UTF-8\">"
+                + "<title>Calcular el cuadrado</title>\n"
+                + "</head>"
+                + "<body>"
+                + "<form action=\"/html/cuadrado.html\">"
+                + "Numero a calcular cuadrado:<br>"
+                + "<input type=int name= value value=0>"
+                + "<input type=submit>"
+                + "</form>"
+                + "</body>"
+                + "</html>");
+    }
 
 }
