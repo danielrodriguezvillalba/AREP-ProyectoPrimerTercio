@@ -60,7 +60,18 @@ public class AppServer {
                 if (ina[1].contains("/apps")) {
                     if (ina[1].contains("?")) {
                         String[] prue = ina[1].split("=");
-                        System.out.println("PRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!" + prue[1]);
+                        String[] param = new String[1];
+                        param[0] = prue[1];
+                        Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2]);
+                        for (Method metodo : c.getMethods()) {
+                            if (metodo.isAnnotationPresent(Web.class)) {
+                                Handler metod = new methodHandler(metodo);
+                                handler.put("/apps/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
+                            }
+                        }
+                        Handler h = handler.get(ina[1]);
+                        String res = h.procesarConParametros(prue);
+                        outputSteam.write(imprima(res).getBytes());
                     } else {
                         if (!handler.busque(ina[1])) {
                             Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2]);

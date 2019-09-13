@@ -25,4 +25,17 @@ public class methodHandler implements Handler {
             return null;
         } 
     }
+    
+
+    @Override
+    public String procesarConParametros(Object[] para) {
+         try{
+            //metodos estaticos sin parametros 
+            System.out.println("paraaaaaaaams");
+             return (String) metodo.invoke(null,para);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        } 
+    }
 }

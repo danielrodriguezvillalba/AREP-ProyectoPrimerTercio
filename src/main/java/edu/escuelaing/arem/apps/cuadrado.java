@@ -52,7 +52,6 @@ public class cuadrado {
     @Web("sumar")
     public static String sumar(String n1) {
         
-        System.out.println("LLEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return "<!DOCTYPE html>"
                 +"<html>" + 
                 "<head/>" + 
