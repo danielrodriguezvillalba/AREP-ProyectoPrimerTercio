@@ -63,7 +63,7 @@ public class AppServer {
                         for (Method metodo : c.getMethods()) {
                             System.out.println(metodo.isAnnotationPresent(Web.class));
                             if (metodo.isAnnotationPresent(Web.class)) {
-                                System.out.println("entra2");
+                                System.out.println("/app/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value());
                                 Handler metod = new methodHandler(metodo);
                                 handler.put("/app/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
                             }
