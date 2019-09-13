@@ -5,10 +5,19 @@
  */
 package edu.escuelaing.arem.anotaciones;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+
 /**
  *
  * @author 2115253
  */
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
 public @interface Web {
 
     String value();
