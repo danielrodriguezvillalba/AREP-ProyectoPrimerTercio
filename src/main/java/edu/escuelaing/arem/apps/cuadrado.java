@@ -37,11 +37,11 @@ public class cuadrado {
                 + "<html>"
                 + "<head>"
                 + "<meta charset=\"UTF-8\">"
-                + "<title>Calcular el cuadrado</title>\n"
+                + "<title>Calcular la division</title>\n"
                 + "</head>"
                 + "<body>"
                 + "<form action=\"/apps/cuadrado/divida\" method=\"get\">"
-                + "Numero a calcular para prueba de la media:<br>"
+                + "Numero a calcular la division entre 2:<br>"
                 + "<input type=\"int\" name= \"value\" value=0>"
                 + "<input type=\"submit\">"
                 + "</form>"
@@ -68,7 +68,7 @@ public class cuadrado {
                 +"<html>" + 
                 "<head/>" + 
                 "<body>" + 
-                "<h2> El numero al cuadrado es : "
+                "<h2> El numero dado dividido en 2 es : "
                 + Integer.toString(num/2)
                 + "</h2>" + "</body>" + "</html>";
     }
