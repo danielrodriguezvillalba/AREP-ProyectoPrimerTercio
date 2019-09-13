@@ -28,7 +28,7 @@ Se Plantea el siguiente diagrama de clases para el problema dado por el profesor
 
 ## Heroku Imagen
 
-https://safe-sea-88689.herokuapp.com/resources/imgBug.png
+https://radiant-dawn-00055.herokuapp.com/resources/imgBug.png
 
 ## Aplicacion en funcionamiento
 
