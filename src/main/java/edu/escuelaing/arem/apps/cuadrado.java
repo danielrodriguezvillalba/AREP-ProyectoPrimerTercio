@@ -23,7 +23,7 @@ public class cuadrado {
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                + "<form action=\"/apps/cuadrado\">"
+                + "<form action=\"/apps/cuadrado/eleve\">"
                 + "Numero a calcular cuadrado:<br>"
                 + "<input type=int name= value value=0>"
                 + "<input type=submit>"
@@ -40,7 +40,7 @@ public class cuadrado {
                 + "<title>Calcular el cuadrado</title>\n"
                 + "</head>"
                 + "<body>"
-                + "<form action=\"/apps/cuadrado/sumar\" method=\"get\">"
+                + "<form action=\"/apps/cuadrado/eleve\" method=\"get\">"
                 + "Numero a calcular para prueba de la media:<br>"
                 + "<input type=\"int\" name= \"value\" value=0>"
                 + "<input type=\"submit\">"
@@ -49,7 +49,7 @@ public class cuadrado {
                 + "</html>");
     }
     
-    @Web("sumar")
+    @Web("eleve")
     public static String sumar(String n1) {
         int num = Integer.parseInt(n1);
         return "<!DOCTYPE html>"
