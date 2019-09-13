@@ -51,13 +51,13 @@ public class cuadrado {
     
     @Web("sumar")
     public static String sumar(String n1) {
-        
+        int num = Integer.parseInt(n1);
         return "<!DOCTYPE html>"
                 +"<html>" + 
                 "<head/>" + 
                 "<body>" + 
-                "<h2> La suma es: "
-                + Integer.toString(Integer.parseInt(n1)) 
+                "<h2> El numero al cuadrado es : "
+                + Integer.toString((int) Math.pow(num, 2))
                 + "</h2>" + "</body>" + "</html>";
     }
 }
