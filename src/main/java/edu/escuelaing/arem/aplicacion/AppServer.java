@@ -71,9 +71,10 @@ public class AppServer {
                                 }
                             }
                         }
-                        String[] antParam = ina[1].split("value");
-                        System.out.println(antParam[0]);
-                        Handler h = handler.get(antParam[0]);
+                        String[] antValue = ina[1].split("value");
+                        String antParam = antValue[0].substring(0,antValue[0].length()-1);
+                        System.out.println(antParam);
+                        Handler h = handler.get(antParam);
                         String res = h.procesarConParametros(param);
                         outputSteam.write(imprima(res).getBytes());
                     } else {
