@@ -62,12 +62,14 @@ public class AppServer {
                         String[] prue = ina[1].split("=");
                         String[] param = new String[1];
                         param[0] = prue[1];
-                        System.out.println(param[0]);
                         Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2]);
                         for (Method metodo : c.getMethods()) {
                             if (metodo.isAnnotationPresent(Web.class)) {
-                                Handler metod = new methodHandler(metodo);
-                                handler.put("/apps/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
+                                if(metodo.getParameterCount() == 1){
+                                    Handler metod = new methodHandler(metodo);
+                                    handler.put("/apps/" + c.getSimpleName() + "/" + metodo.getAnnotation(Web.class).value(), metod);
+                                }
+                                
                             }
                         }
                         Handler h = handler.get(ina[1]);
