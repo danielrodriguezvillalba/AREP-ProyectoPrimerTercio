@@ -59,7 +59,7 @@ public class cuadrado {
                 + "<head/>"
                 + "<body>"
                 + "<h2> La suma es: "
-                + Integer.toString(Integer.parseInt(n1))
+                + "Integer.toString(Integer.parseInt())"
                 + "</h2>" + "</body>" + "</html>";
     }
 }
