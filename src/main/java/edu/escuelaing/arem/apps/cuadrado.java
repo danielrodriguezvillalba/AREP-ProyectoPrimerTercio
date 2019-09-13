@@ -31,6 +31,7 @@ public class cuadrado {
                 + "</body>"
                 + "</html>");
     }
+
     @Web("media")
     public static String calcMedia() {
         return ("<!DOCTYPE html>"
@@ -48,16 +49,17 @@ public class cuadrado {
                 + "</body>"
                 + "</html>");
     }
-    
+
     @Web("sumar")
-    public static String sumar(String n1) {
+    public static String sumar() {
+
         System.out.println("LLEGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         return "<!DOCTYPE html>"
-                +"<html>" + 
-                "<head/>" + 
-                "<body>" + 
-                "<h2> La suma es: "
-                + Integer.toString(Integer.parseInt(n1)) 
+                + "<html>"
+                + "<head/>"
+                + "<body>"
+                + "<h2> La suma es: "
+                + Integer.toString(Integer.parseInt(n1))
                 + "</h2>" + "</body>" + "</html>";
     }
 }
