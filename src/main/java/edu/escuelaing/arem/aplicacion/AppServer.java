@@ -59,7 +59,7 @@ public class AppServer {
                 String[] clas = ina[1].split("/");
                 if (ina[1].contains("/apps")) {
                     if (ina[1].contains("?")) {
-                        String[] prue = ina[1].split("value");
+                        String[] prue = ina[1].split("=");
                         System.out.println("PRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!" + prue[1]);
                     } else {
                         if (!handler.busque(ina[1])) {
