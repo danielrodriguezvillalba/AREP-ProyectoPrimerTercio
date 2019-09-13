@@ -31,7 +31,8 @@ public class methodHandler implements Handler {
     public String procesarConParametros(Object[] para) {
          try{
             //metodos estaticos sin parametros 
-            System.out.println("paraaaaaaaams");
+            System.out.println(para.length);
+             System.out.println(metodo.getParameterCount());
              return (String) metodo.invoke(null,para);
         }catch(Exception e){
             e.printStackTrace();
