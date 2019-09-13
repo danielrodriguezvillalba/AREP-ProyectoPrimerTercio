@@ -5,7 +5,7 @@
 
 Clonar el proyecto:
 
-    git clone https://github.com/darm145/arepProject
+    git clone https://github.com/danielrodriguezvillalba/AREP-ProyectoPrimerTercio
 
 cd para navegar por los archivos hacia el proyecto AREP-ProyectoPrimerTercio
 
