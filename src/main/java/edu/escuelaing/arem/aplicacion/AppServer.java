@@ -71,7 +71,7 @@ public class AppServer {
                                 }
                             }
                         }
-                        String[] antParam = ina[1].split("?");
+                        String[] antParam = ina[1].split("value");
                         System.out.println(antParam[0]);
                         Handler h = handler.get(antParam[0]);
                         String res = h.procesarConParametros(param);
