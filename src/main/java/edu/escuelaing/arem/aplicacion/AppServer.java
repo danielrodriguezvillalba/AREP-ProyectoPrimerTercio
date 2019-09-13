@@ -72,6 +72,7 @@ public class AppServer {
                                 
                             }
                         }
+                        System.out.println(ina[1]);
                         Handler h = handler.get(ina[1]);
                         String res = h.procesarConParametros(prue);
                         outputSteam.write(imprima(res).getBytes());
