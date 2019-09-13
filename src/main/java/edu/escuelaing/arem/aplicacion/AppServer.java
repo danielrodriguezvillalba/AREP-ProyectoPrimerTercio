@@ -60,7 +60,7 @@ public class AppServer {
                 if (ina[1].contains("/apps")) {
                     if (ina[1].contains("?")) {
                         String[] prue = ina[1].split("value");
-                        System.out.println("PRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!" + prue[1]());
+                        System.out.println("PRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!" + prue[1]);
                     } else {
                         if (!handler.busque(ina[1])) {
                             Class<?> c = Class.forName("edu.escuelaing.arem.apps." + clas[2]);
