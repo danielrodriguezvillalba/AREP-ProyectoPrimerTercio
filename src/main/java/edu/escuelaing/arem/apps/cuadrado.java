@@ -32,7 +32,7 @@ public class cuadrado {
                 + "</html>");
     }
     @Web("media")
-    public static String calcCuadra() {
+    public static String calcMedia() {
         return ("<!DOCTYPE html>"
                 + "<html>"
                 + "<head>"
@@ -41,7 +41,7 @@ public class cuadrado {
                 + "</head>"
                 + "<body>"
                 + "<form action=\"/html/cuadrado.html\">"
-                + "Numero a calcular cuadrado:<br>"
+                + "Numero a calcular para prueba de la media:<br>"
                 + "<input type=int name= value value=0>"
                 + "<input type=submit>"
                 + "</form>"
