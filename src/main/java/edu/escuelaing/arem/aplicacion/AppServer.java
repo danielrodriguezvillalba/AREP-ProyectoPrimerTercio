@@ -20,7 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
-public class AppServer {
+public class AppServer implements Runnable{
 
     private static ListaURLHandler handler;
 
@@ -175,6 +175,15 @@ public class AppServer {
         } catch (IOException e) {
         }
 
+    }
+
+    @Override
+    public void run() {
+        try {
+            inicializar();
+        } catch (IOException ex) {
+            Logger.getLogger(AppServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
